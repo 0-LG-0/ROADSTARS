@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+}
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    background-color: silver;
+    text-align: center;
+}
+
+nav a {
+    flex: 1;
+    text-decoration: none;
+    background-color: silver;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 5px 20px;
+    margin: 0;
+    font-size: 20px;
+}
+
+header h1 {
+    background-image: url('../images/icon.png');
+    background-size: 36px;
+    background-repeat: no-repeat;
+    background-position: 0px;
+    padding-left: 50px
+}
