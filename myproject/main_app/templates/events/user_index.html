@@ -4,26 +4,26 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock %}
 {% block content %}
-    <a class="add_post" href="{% url 'event-create' %}">Add Event</a>
+<a class="add_post" href="{% url 'event-create' %}">Add Event</a>
 {% for event in events %}
     <a class="detail_link" href="{% url 'user-event-detail' event.id %}">
         <div class="post_display">
-                <p class="user_date">{{ event.created_at|date:"m-d-y h:i A" }}</p>
+            <p class="user_date">{{ event.created_at|date:"m-d-y h:i A" }}</p>
+            {% autoescape off %}
+                <div class="event_title">{{ event.title }}</div>
+            {% endautoescape %}
+            <p class="event_date">Date of Event: {{ event.event_date|date:"D, F jS, Y"  }}</p>
+            {% if event.image_URL %}
+                <img class="post_img" src="{{ event.image_URL }}" alt="{{ event.user.username}} post" />
+            {% endif %}
+            {% if event.upload_image %}
+                <img class="post_img" src="{{ event.upload_image.url }}" alt="{{ event.user.username}} post" />
+            {% endif %}
+            {% if event.description %}
                 {% autoescape off %}
-                    <div class="event_title">{{ event.title }}</div>
+                    <div class="index_txt">{{ event.description }}</div>
                 {% endautoescape %}
-                <p class="event_date">Date of Event: {{ event.event_date|date:"D, F jS, Y"  }}</p>
-                {% if event.image %}
-                    <img class="post_img" src="{{ event.image }}" />
-                {% endif %}
-                {% if event.upload_image %}
-                    <img class="post_img" src="{{ event.upload_image.url }}" />
-                {% endif %}
-                {% if event.description %}
-                    {% autoescape off %}
-                        <div class="index_txt">{{ event.description }}</div>
-                    {% endautoescape %}
-                {% endif %}
+            {% endif %}
         </div>
     </a>
 {% endfor %}

@@ -4,142 +4,154 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 {% endblock %}
 {% block content %}
-<h1>This is your home page</h1>
 <div id="home_display">
-{% if earliest_event %}
-    {% if user.is_authenticated %}
-<article class="event_article">
-        <h2>Soonest Event</h2>
-            <p class="event_user">By: <strong>{{ earliest_event.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ earliest_event.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ earliest_event.event_date|date:"D, F jS, Y"  }}</p>
-{% if earliest_event.image %}
-    <img src="{{ earliest_event.image }}" />
+    {% if earliest_event %}
+        {% if user.is_authenticated %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' earliest_event.id %}">
+                    <h2>Soonest Event</h2>
+                    <p class="event_user">By: <strong>{{ earliest_event.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ earliest_event.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ earliest_event.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if earliest_event.image_URL %}
+                        <img src="{{ earliest_event.image_URL }}" alt="{{ earliest_event.user.username}} post" />
+                    {% endif %}
+                    {% if earliest_event.upload_image %}
+                        <img src="{{ earliest_event.upload_image.url }}" alt="{{ earliest_event.user.username}} post"/>
+                    {% endif %}
+                    {% if earliest_event.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ earliest_event.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% endif %}
+                </a>
+            </article>
+        
+        {% else %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' public_earliest_event.id %}">
+                    <h2>Soonest Event</h2>
+                    <p class="event_user">By: <strong>{{ public_earliest_event.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ public_earliest_event.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ public_earliest_event.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if public_earliest_event.image_URL %}
+                        <img src="{{ public_earliest_event.image_URL }}" alt="{{ public_arliest_event.user.username}} post"/>
+                    {% endif %}
+                    {% if public_earliest_event.upload_image %}
+                        <img src="{{ public_earliest_event.upload_image.url }}" alt="{{ public_earliest_event.user.username}} post"/>
+                    {% endif %}
+                    {% if public_earliest_event.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ public_earliest_event.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% endif %}
+                </a>
+            </article>
+        {% endif %}
     {% endif %}
-    {% if earliest_event.upload_image %}
-    <img src="{{ earliest_event.upload_image.url }}" />
-    {% endif %}
-    {% if earliest_event.description %}
-        {% autoescape off %}
-        <div class="event_descr">{{ earliest_event.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-</article>
 
-{% else %}
-    <article class="event_article">
-        <h2>Soonest Event</h2>
-            <p class="event_user">By: <strong>{{ public_earliest_event.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ public_earliest_event.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ public_earliest_event.event_date|date:"D, F jS, Y"  }}</p>
-{% if public_earliest_event.image %}
-    <img src="{{ public_earliest_event.image }}" />
-    {% endif %}
-    {% if public_earliest_event.upload_image %}
-    <img src="{{ public_earliest_event.upload_image.url }}" />
-    {% endif %}
-    {% if public_earliest_event.description %}
-        {% autoescape off %}
-        <div class="event_descr">{{ public_earliest_event.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-</article>
-{% endif %}
-{% endif %}
+    {% if most_attendees %}
+        {% if user.is_authenticated %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' most_attendees.id %}">
+                    <h2>Most Attending</h2>
+                    <p class="event_user">By: <strong>{{ most_attendees.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ most_attendees.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ most_attendees.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if most_attendees.image_URL %}
+                        <img src="{{ most_attendees.image_URL }}" alt="{{ most_attendees.user.username}} post" />
+                    {% endif %}
+                    {% if most_attendees.upload_image %}
+                        <img src="{{ most_attendees.upload_image.url }}" alt="{{ most_attendees.user.username}} post" />
+                    {% endif %}
+                    {% if most_attendees.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ most_attendees.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% endif %}
+                </a>
+            </article>
 
-{% if most_attendees %}
-{% if user.is_authenticated %}
-<article class="event_article">
-    <h2>Most Attending</h2>
-    <p class="event_user">By: <strong>{{ most_attendees.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ most_attendees.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ most_attendees.event_date|date:"D, F jS, Y"  }}</p>
-{% if most_attendees.image %}
-    <img src="{{ most_attendees.image }}" />
+        {% else %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' public_most_attendees.id %}">
+                    <h2>Most Attending</h2>
+                    <p class="event_user">By: <strong>{{ public_most_attendees.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ public_most_attendees.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ public_most_attendees.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if public_most_attendees.image_URL %}
+                        <img src="{{ public_most_attendees.image_URL }}" alt="{{ public_most_attendees.user.username}} post" />
+                    {% endif %}
+                    {% if public_most_attendees.upload_image %}
+                        <img src="{{ public_most_attendees.upload_image.url }}" alt="{{ public_most_attendees.user.username}} post" />
+                    {% endif %}
+                    {% if public_most_attendees.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ public_most_attendees.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% endif %}
+                </a>
+            </article>
+        {% endif %}
     {% endif %}
-    {% if most_attendees.upload_image %}
-    <img src="{{ most_attendees.upload_image.url }}" />
-    {% endif %}
-    {% if most_attendees.description %}
-        {% autoescape off %}
-            <div class="event_descr">{{ most_attendees.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-</article>
 
-{% else %}
-    <article class="event_article">
-    <h2>Most Attending</h2>
-    <p class="event_user">By: <strong>{{ public_most_attendees.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ public_most_attendees.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ public_most_attendees.event_date|date:"D, F jS, Y"  }}</p>
-{% if public_most_attendees.image %}
-    <img src="{{ public_most_attendees.image }}" />
-    {% endif %}
-    {% if public_most_attendees.upload_image %}
-    <img src="{{ public_most_attendees.upload_image.url }}" />
-    {% endif %}
-    {% if public_most_attendees.description %}
-        {% autoescape off %}
-            <div class="event_descr">{{ public_most_attendees.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-</article>
-{% endif %}
-{% endif %}
+    {% if most_participants %}
+        {% if user.is_authenticated %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' most_participants.id %}">
+                    <h2>Most Participating</h2>
+                    <p class="event_user">By: <strong>{{ most_participants.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ most_participants.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ most_participants.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if most_participants.image_URL %}
+                        <img src="{{ most_participants.image_URL }}" alt="{{ most_participants.user.username}} post" />
+                    {% endif %}
+                    {% if most_participants.upload_image %}
+                        <img src="{{ most_participants.upload_image.url }}" alt="{{ most_participants.user.username}} post" />
+                    {% endif %}
+                    {% if most_participants.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ most_participants.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% endif %}
+                </a>
+            </article>
 
-{% if most_participants %}
-    {% if user.is_authenticated %}
-<article class="event_article">
-    <h2>Most Participating</h2>
-    <p class="event_user">By: <strong>{{ most_participants.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ most_participants.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ most_participants.event_date|date:"D, F jS, Y"  }}</p>
-{% if most_participants.image %}
-    <img src="{{ most_participants.image }}" />
+        {% else %}
+            <article class="event_article">
+                <a class="detail_link" href="{% url 'event-detail' public_most_participants.id %}">
+                    <h2>Most Attending</h2>
+                    <p class="event_user">By: <strong>{{ public_most_participants.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
+                    {% autoescape off %}
+                        <div class="event_title">{{ public_most_participants.title }}</div>
+                    {% endautoescape %}
+                    <p class="event_date">Date of Event: {{ public_most_participants.event_date|date:"D, F jS, Y"  }}</p>
+                    {% if public_most_participants.image_URL %}
+                        <img src="{{ public_most_participants.image_URL }}" alt="{{ public_most_participants.user.username}} post" />
+                    {% endif %}
+                    {% if public_most_participants.upload_image %}
+                        <img src="{{ public_most_participants.upload_image.url }}" alt="{{ public_most_participants.user.username}} post" />
+                    {% endif %}
+                    {% if public_most_participants.description %}
+                        {% autoescape off %}
+                            <div class="event_descr">{{ public_most_participants.description|truncatechars_html:60 }}</div>
+                        {% endautoescape %}
+                    {% else %}
+                    <p id="no_desc"> </p>
+                    {% endif %}
+                </a>
+            </article>
+        {% endif %}
     {% endif %}
-    {% if most_participants.upload_image %}
-    <img src="{{ most_participants.upload_image.url }}" />
-    {% endif %}
-    {% if most_participants.description %}
-        {% autoescape off %}
-            <div class="event_descr">{{ most_participants.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-</article>
-
-{% else %}
-    <article class="event_article">
-    <h2>Most Attending</h2>
-    <p class="event_user">By: <strong>{{ public_most_participants.user.username }}</strong> ┃ {{ earliest_event.created_at|date:"m-d-y h:i A" }}</p>
-    {% autoescape off %}
-    <div class="event_title">{{ public_most_participants.title }}</div>
-    {% endautoescape %}
-    <p class="event_date">Date of Event: {{ public_most_participants.event_date|date:"D, F jS, Y"  }}</p>
-{% if public_most_participants.image %}
-    <img src="{{ public_most_participants.image }}" />
-    {% endif %}
-    {% if public_most_participants.upload_image %}
-    <img src="{{ public_most_participants.upload_image.url }}" />
-    {% endif %}
-    {% if public_most_participants.description %}
-        {% autoescape off %}
-            <div class="event_descr">{{ public_most_participants.description|truncatechars_html:60 }}</div>
-        {% endautoescape %}
-    {% endif %}
-    {% endif %}
-    
-</article>
-{% endif %}
 </div>
 {% endblock %}

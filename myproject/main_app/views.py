@@ -102,7 +102,7 @@ def event_user_detail(request, event_id):
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['public', 'event_date', 'image_URL', 'upload_image', 'title', 'description', 'instructions_and_rules', 'address_and_contact', 'particpating_and_attending', 'attendees', 'participants']
+    fields = ['public', 'event_date', 'image_URL', 'upload_image', 'title', 'description', 'instructions_and_rules', 'address_and_contact', 'participating_and_attending', 'attendees', 'participants']
     template_name = 'events/form.html'
     success_url = '/events/'
 
@@ -112,7 +112,7 @@ class EventCreate(CreateView):
     
 class EventUpdate(UpdateView):
     model = Event
-    fields = ['public', 'event_date', 'image_URL', 'upload_image', 'title', 'description', 'instructions_and_rules', 'address_and_contact', 'particpating_and_attending', 'attendees', 'participants']
+    fields = ['public', 'event_date', 'image_URL', 'upload_image', 'title', 'description', 'instructions_and_rules', 'address_and_contact', 'participating_and_attending', 'attendees', 'participants']
     template_name = 'events/form.html'
     success_url = '/events/user/'
     
@@ -120,3 +120,18 @@ class EventDelete(DeleteView):
     model = Event
     template_name = 'events/event_confirm_delete.html'
     success_url = '/events/user/'
+    
+class UserDelete(DeleteView):
+    model = User
+    template_name = 'users/user_confirm_delete.html'
+    success_url = '/'
+    
+class UserUpdate(UpdateView):
+    model=User
+    fields = ['username']
+    template_name = 'users/signup.html'
+    success_url = '/user/profile'
+
+def user_profile(request):
+    user = request.user
+    return render(request, 'users/profile.html', {'user': user })

@@ -4,30 +4,30 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
 {% endblock %}
 {% block content %}
-    {% if user.is_authenticated %}
-        <a class="add_post" href="{% url 'post-create' %}">Add Post</a>
-    {% endif %}
-{% for post in posts %}
-{% if post.public or not post.public and user.is_authenticated %}
-    <a class="detail_link" href="{% url 'post-detail' post.id %}">
-        <div class="post_display">
-            <div class="post_info">
-            <p class="index_user">＠{{ post.user.username }}</p>
-            <p class="index_date" >{{ post.created_at|date:"m-d-y h:i A" }}</p>
-            </div>
-            {% if post.image %}
-                <img class="post_img" src="{{ post.image }}"/>
-            {% endif %}
-            {% if post.upload_image %}
-                <img class="post_img" src="{{ post.upload_image.url }}"/>
-            {% endif %}
-            {% if post.post_text %}
-                {% autoescape off %}
-                    <div class="index_txt">{{ post.post_text }}</div>
-                {% endautoescape %}
-            {% endif %}
-        </div>
-    </a>
+{% if user.is_authenticated %}
+    <a class="add_post" href="{% url 'post-create' %}">Add Post</a>
 {% endif %}
+{% for post in posts %}
+    {% if post.public or not post.public and user.is_authenticated %}
+        <a class="detail_link" href="{% url 'post-detail' post.id %}">
+            <div class="post_display">
+                <div class="post_info">
+                    <p class="index_user">＠{{ post.user.username }}</p>
+                    <p class="index_date" >{{ post.created_at|date:"m-d-y h:i A" }}</p>
+                </div>
+                {% if post.image_URL %}
+                    <img class="post_img" src="{{ post.image_URL }}" alt="{{ post.user.username}} post" />
+                {% endif %}
+                {% if post.upload_image %}
+                    <img class="post_img" src="{{ post.upload_image.url }}" alt="{{ post.user.username}} post" />
+                {% endif %}
+                {% if post.post_text %}
+                    {% autoescape off %}
+                        <div class="index_txt">{{ post.post_text }}</div>
+                    {% endautoescape %}
+                {% endif %}
+            </div>
+        </a>
+    {% endif %}
 {% endfor %}
 {% endblock %}

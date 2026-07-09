@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
+{% block content %}
+<h1>{{ user.username }}</h1>
+<div class="user_options">
+        <a class="user_btns" href="{% url 'user-update' user.id %}">Edit</a>
+        <a class="user_btns" href="{% url 'user-delete' user.id %}">Delete</a>
+    </div>
+    <a class="user_btns"href="{% url 'home' %}">Home</a>
+{% endblock %}

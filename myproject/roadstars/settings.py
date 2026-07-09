@@ -36,8 +36,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main_app',
     'django_ckeditor_5',
-    # 'django_ckeditor_5_uploader',
-    'phonenumber_field',
     'django_cleanup.apps.CleanupConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -117,8 +115,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-PHONENUMBER_DEFAULT_REGION = 'US'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/

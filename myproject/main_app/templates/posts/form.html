@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 {% block content %}
 <div class="form_display">
@@ -13,9 +13,9 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% if error_message %}
-        <div>
-            {{ error_message }}
-        </div>
+            <div>
+                {{ error_message }}
+            </div>
         {% endif %}
         <table>
             {{ form.as_table }}

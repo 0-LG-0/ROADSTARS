@@ -11,11 +11,11 @@
         <div class="event_title">{{ event.title }}</div>
     {% endautoescape %}
     <p class="event_date">Date of Event: {{ event.event_date|date:"D, F jS, Y"  }}</p>
-    {% if event.image %}
-        <img class="detail_img" src="{{ event.image }}" />
+    {% if event.image_URL %}
+        <img class="detail_img" src="{{ event.image_URL }}" alt="{{ event.user.username}} post" />
     {% endif %}
     {% if event.upload_image %}
-        <img class="detail_img" src="{{ event.upload_image.url }}" />
+        <img class="detail_img" src="{{ event.upload_image.url }}" alt="{{ event.user.username}} post" />
     {% endif %}
     {% if event.description %}
         {% autoescape off %}

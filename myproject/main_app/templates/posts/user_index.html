@@ -9,11 +9,11 @@
     <a class="detail_link" href="{% url 'user-post-detail' post.id %}">
         <div class="post_display">
             <p class="user_date">{{ post.created_at|date:"m-d-y h:i A" }}</p>
-            {% if post.image %}
-                <img class="post_img" src="{{ post.image }}" />
+            {% if post.image_URL %}
+                <img class="post_img" src="{{ post.image_URL }}" alt="{{ post.user.username}} post" />
             {% endif %}
             {% if post.upload_image %}
-                <img class="post_img" src="{{ post.upload_image.url }}" />
+                <img class="post_img" src="{{ post.upload_image.url }}" alt="{{ post.user.username}} post" />
             {% endif %}
             {% if post.post_text %}
                 {% autoescape off %}

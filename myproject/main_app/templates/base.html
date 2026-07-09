@@ -14,11 +14,9 @@
     <body>
         <header>
             <nav>
-                
                 <a href="{% url 'home' %}">Home</a>
                 <a href="{% url 'post-index' %}">Posts</a>
                 <a href="{% url 'event-index' %}">Events</a>
-                
                 {% if user.is_authenticated %}
                     <a href="{% url 'user-post-index' %}">My Posts</a>
                     <a href="{% url 'user-event-index' %}">My Events</a>
@@ -32,10 +30,12 @@
                 {% endif %}
             </nav>
             <div id="title">
-            <h1>RoadStars</h1>
-            {% if user.is_authenticated %}
-                <h2>{{ user.username }}</h2>
-            {% endif %}
+                <h1>RoadStars</h1>
+                {% if user.is_authenticated %}
+                    <a id="user_link" href="{% url 'user-profile' %}">
+                        <h2>{{ user.username }}</h2>
+                    </a>
+                {% endif %}
             </div>
             <hr />
         </header>

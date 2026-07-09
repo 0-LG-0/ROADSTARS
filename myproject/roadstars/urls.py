@@ -18,19 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.decorators import login_required
-# from ckeditor_uploader import views
-# from main_app.views import custom_image_upload
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    # path('posts/', include('posts.urls'), namespace='post'),
     path('ckeditor5/', include("django_ckeditor_5.urls")),
-    # path('ckeditor5/image_upload/', login_required('django_ckeditor_5.upload'), name='custom_image_upload'),
 ]
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

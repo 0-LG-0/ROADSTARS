@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block head %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 {% block content %}
 <div class="form_display">
     {% if event.title %}
-            <h1 class="editing">Editing－Event: 
-                {% autoescape off%}
+        <h1 class="editing">Editing－Event: 
+            {% autoescape off%}
                 <span>{{ event.title }}</span>
             {% endautoescape %}
-            </h1>
+        </h1>
     {% else %}
         <h1>New Event</h1>
     {% endif %}

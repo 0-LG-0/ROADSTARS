@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
 {% block head %}
-<!-- {% load static %}  if youre using ind css for page 
-css link here -->
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 {% block content %}
-<div>
+<div class="form_display">
     <h1>Sign Up</h1>
     {% if error_message %}
-    <p>{{ error_message }}</p>
+        <p>{{ error_message }}</p>
     {% endif %}
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
-        <button type="submit">Submit</button>
+        <div class="user_options">
+            <a class="user_btns" href="{{ request.META.HTTP_REFERER }}">Back</a>
+            <button class="user_btns" type="submit">Signup</button>
+        </div>
     </form>
 </div>
 {% endblock %}

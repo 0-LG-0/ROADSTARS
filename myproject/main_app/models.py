@@ -1,8 +1,6 @@
 from django.db import models
-from django.conf import settings
 
 from django_ckeditor_5.fields import CKEditor5Field
-from phonenumber_field.modelfields import PhoneNumberField
 from django.db.models import Q
 from django.contrib.auth.models import User
 # Create your models here.
@@ -10,7 +8,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     image_URL = models.CharField(max_length=500, blank=True, null=True)
     upload_image = models.ImageField(upload_to='post_image/', blank=True, null=True)
-    post_text = CKEditor5Field(max_length=500, blank=True, null=True, config_name='default')
+    post_text = CKEditor5Field(max_length=2000, blank=True, null=True, config_name='default')
     public = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -34,10 +32,10 @@ class Event(models.Model):
     title = CKEditor5Field(max_length=200, config_name='default')
     image_URL = models.CharField(max_length=500, blank=True, null=True)
     upload_image = models.ImageField(upload_to='post_image/', blank=True, null=True)
-    description = CKEditor5Field(max_length=500, blank=True, null=True, config_name='default')
-    instructions_and_rules = CKEditor5Field(max_length=500, blank=True, null=True, config_name='default')
-    address_and_contact = CKEditor5Field(default="Example: <h2>Address: 0000 Street, City, State zipcode <br />or Contact for Address <br />Email: example@gmail.com <br />Phone number: +1(111) 111-1111</h2>", max_length=500, blank=True, null=True, config_name='default')
-    particpating_and_attending = CKEditor5Field(default="Example (for displaying): <h3>Participating: 20/30 <br />Attending: 65/90</h3>", max_length=500, blank=True, null=True, config_name='default')
+    description = CKEditor5Field(max_length=2000, blank=True, null=True, config_name='default')
+    instructions_and_rules = CKEditor5Field(max_length=1000, blank=True, null=True, config_name='default')
+    address_and_contact = CKEditor5Field(default="Example: <p>Address: 0000 Street, City, State zipcode or ''Contact for Address'' <br />Email: example@gmail.com <br />Phone number: +1(111) 111-1111</p>", max_length=500, blank=True, null=True, config_name='default')
+    participating_and_attending = CKEditor5Field( default="Example (for displaying): <p>Participating: 20/30 <br />Attending: 65/90</p>", max_length=500, blank=True, null=True, config_name='default')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     event_date = models.DateField()
     public = models.BooleanField(default=False, blank=True, null=True)

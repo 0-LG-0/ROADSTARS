@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 {% block head %}
-<!-- {% load static %}  if youre using ind css for page 
-css link here -->
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {{ form.media }}
 {% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
-    <section>
+    <section class="form_display">
         <form action="{% url 'user-login' %}" method="post">
             <h1>LogIn</h1>
             {% csrf_token %} {{ form.as_p }}
             <input type="hidden" name="next" value="{{ next }}" />
-            <button type="submit">Login</button>
+            <div class="user_options">
+                <a class="user_btns" href="{{ request.META.HTTP_REFERER }}">Back</a>
+                <button class="user_btns" type="submit">Login</button>
+            </div>
         </form>
     </section>
 {% endif %}

@@ -22,6 +22,20 @@ nav a {
     align-content: center;
 }
 
+nav a:hover {
+    flex: 1;
+    text-decoration: none;
+    background: linear-gradient(to top, slategray, gray, black);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    padding: auto 20px;
+    margin: 0;
+    font-size: 20px;
+    align-content: center;
+    -webkit-text-stroke: 2px white;
+}
+
 nav form button {
     flex: 1;
     font-family: inherit;
@@ -33,6 +47,20 @@ nav form button {
     padding: auto 20px;
     margin: 0;
     font-size: 20px;
+}
+
+nav form button:hover {
+    flex: 1;
+    font-family: inherit;
+    text-decoration: none;
+    background: linear-gradient(to top, slategray, gray, black);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    padding: auto 20px;
+    margin: 0;
+    font-size: 20px;
+    -webkit-text-stroke: 2px white;
 }
 
 header {
@@ -65,4 +93,11 @@ header #title {
     display: flex;
     justify-content: space-between;
     height: 70px;
+}
+
+#user_link {
+    text-decoration: none;
+    color: black;
+    align-content: center;
+
 }

@@ -59,3 +59,17 @@ button {
     font-family: inherit;
     font-size: inherit;
 }
+
+.del {
+    color: red;
+    border: 3px solid black;
+    background: linear-gradient(to top, white, silver, grey);
+    padding: 10px 30px;
+    border-radius: 8px;
+    -webkit-text-stroke: .5px black;
+    box-shadow: 
+    -1px -1px 10px black,
+    -1px 1px 10px black,
+    1px -1px 10px black,
+    1px 1px 10px black;
+}
