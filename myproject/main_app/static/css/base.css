@@ -12,19 +12,57 @@ nav {
 nav a {
     flex: 1;
     text-decoration: none;
-    background-color: silver;
+    background: linear-gradient(to top, slategray, gray, black);
     border: 2px solid white;
     color: white;
     font-weight: bold;
-    padding: 5px 20px;
+    padding: auto 20px;
+    margin: 0;
+    font-size: 20px;
+    align-content: center;
+}
+
+nav form button {
+    flex: 1;
+    font-family: inherit;
+    text-decoration: none;
+    background: linear-gradient(to top, slategray, gray, black);
+    border: 2px solid white;
+    color: white;
+    font-weight: bold;
+    padding: auto 20px;
     margin: 0;
     font-size: 20px;
 }
 
+header {
+    background-color: silver;
+}
+
 header h1 {
     background-image: url('../images/icon.png');
-    background-size: 36px;
+    background-size: 55px;
     background-repeat: no-repeat;
-    background-position: 0px;
-    padding-left: 50px
+    background-position: 10px 5px;
+    padding-left: 65px;
+    padding-top: 25px;
+    margin: auto 0;
+}
+
+header hr {
+    height: 2px;
+    background-color: black;
+    border: none;
+}
+
+header h2 {
+    margin: auto 30px;
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+header #title {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
 }

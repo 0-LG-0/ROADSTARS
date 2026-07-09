@@ -1,0 +1,61 @@
+.form_display {
+    width: fit-content;
+    margin: 0 auto;
+}
+table {
+    width: 90%;
+}
+
+h1 {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.edit_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+ .editing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ck_editor__main {
+    resize: vertical;
+    overflow: auto;
+    padding: 0;
+}
+
+.ck-editor__editable_inline {
+    min-height: 50px !important;
+}
+
+.user_options {
+    display: flex;
+    justify-content: center;
+    margin: 0 10%;
+    gap: 1%;
+}
+
+.user_btns {
+    flex: 1;
+    display: block;
+    text-decoration: none;
+    color: black;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    width: 30%;
+    margin: 20px auto 40px auto;
+    text-align: center;
+    padding: 5px;
+    background: linear-gradient(to top, white, silver, grey);
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+}

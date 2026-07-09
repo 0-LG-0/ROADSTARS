@@ -14,6 +14,7 @@ from pathlib import Path
 
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,6 +35,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main_app',
+    'django_ckeditor_5',
+    # 'django_ckeditor_5_uploader',
+    'phonenumber_field',
+    'django_cleanup.apps.CleanupConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,8 +82,8 @@ WSGI_APPLICATION = 'roadstars.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'roadstars',
     }
 }
 
@@ -113,12 +118,39 @@ USE_I18N = True
 
 USE_TZ = True
 
+PHONENUMBER_DEFAULT_REGION = 'US'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = '/media/'
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': [
+            'heading', '|',
+            'alignment', '|',
+            'fontSize', '|',
+            'bold', 'italic', 'underline', 'strikethrough', 'link', 'bulletedList', 'numberedList', '|',
+            'blockQuote', 'insertTable', '|',
+        ],
+        "removePlugins": ["MediaEmbedToolbar", "ImageToolbar"],
+        'alignment': {
+            'options': ['left', 'center', 'right', 'justify']
+        },
+        'fontSize': {
+            'options': [9, 10, 11, 12, 13, 14, 'default', 16, 17, 18, 19, 20, 21 ]
+        },
+        'contentCss': [
+            'myproject/main_app/static/css/form.css'
+        ]
+    }
+}

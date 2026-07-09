@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
+{% endblock %}
+{% block content %}
+<div class='post_display'>
+    <div class="post_info">
+            <p class="detail_user">＠{{ event.user.username }}</p>
+            <p class="detail_date" >{{ event.created_at|date:"m-d-y h:i A" }}</p>
+        </div>
+        <a class="detail_back" href="{% url 'event-index' %}">𝐗</a>
+        {% autoescape off %}
+        <div class="event_title">{{ event.title }}</div>
+        {% endautoescape %}
+        <p class="event_date">Date of Event: {{ event.event_date|date:"D, F jS, Y"  }}</p>
+        {% if event.image %}
+            <img class="detail_img" src="{{ event.image }}" />
+        {% endif %}
+        {% if event.upload_image %}
+            <img class="detail_img" src="{{ event.upload_image.url }}" />
+        {% endif %}
+        {% if event.description %}
+            {% autoescape off %}
+                <div class="detail_txt">{{ event.description }}</div>
+            {% endautoescape %}
+        {% endif %}
+        {% if event.instructions_and_rules %}
+            {% autoescape off %}
+                <div class="detail_txt">{{ event.instructions_and_rules }}</div>
+            {% endautoescape %}
+        {% endif %}
+        {% if event.address_and_contact %}
+            {% autoescape off %}
+                <div class="detail_txt">{{ event.address_and_contact }}</div>
+            {% endautoescape %}
+        {% endif %}
+        {% if event.particpating_and_attending %}
+            {% autoescape off %}
+                <div class="detail_txt">{{ event.particpating_and_attending }}</div>
+            {% endautoescape %}
+        {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+/* body {
+    background-image: url('https://media.istockphoto.com/id/2260752094/photo/checkered-flag-on-black.jpg?s=612x612&w=0&k=20&c=T1d6omeDp9NtY7ZPEbDuHRNQgdOts-8S1Gd-clxVunc=');
+    background-repeat: repeat;
+    background-size: contain;
+} */
+
+.post_display {
+    margin: 20px 50px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 
+    -1px -1px 10px black,
+    -1px 1px 10px black,
+    1px -1px 10px black,
+    1px 1px 10px black;
+    background-color: white;
+}
+
+.add_post {
+    display: block;
+    text-decoration: none;
+    color: black;
+    border: 1.5px ridge grey;
+    border-radius: 8px;
+    width: 70%;
+    margin: 5px auto 0 auto;
+    text-align: center;
+    padding: 5px;
+    background: linear-gradient(to top, white, silver, grey); 
+}
+
+.detail_link {
+    text-decoration: none;
+    color: black;
+}
+
+.user_date {
+    margin-left: 15.5%;
+    text-decoration: none;
+}
+
+.post_info {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 15% 0 15%;
+}
+
+.index_user {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.index_date {
+    margin-right: 10px;
+    margin-top: 28px;
+}
+
+.post_img {
+    display: block;
+    max-width: 450px;
+    max-height: 450px;
+    margin: 0 auto 20px auto;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.index_txt {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.event_title {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}
+
+.event_date {
+    display: block;
+    width: fit-content;
+    margin: -5px auto 10px auto;
+    font-weight: bold;
+}

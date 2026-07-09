@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}" />
+{% endblock %}
+{% block content %}
+<div class='post_display'>
+        <div class="post_info">
+            <p class="detail_user">＠{{ post.user.username }}</p>
+            <p class="detail_date" >{{ post.created_at|date:"m-d-y h:i A" }}</p>
+        </div>
+        <a class="detail_back" href="{% url 'post-index' %}">𝐗</a>
+        {% if post.image %}
+            <img class="detail_img" src="{{ post.image }}" />
+        {% endif %}
+        {% if post.upload_image %}
+            <img class="detail_img" src="{{ post.upload_image.url }}" />
+        {% endif %}
+        {% if post.post_text %}
+            {% autoescape off %}
+                <div class="detail_txt">{{ post.post_text }}</div>
+            {% endautoescape %}
+        {% endif %}
+</div>
+{% endblock %}

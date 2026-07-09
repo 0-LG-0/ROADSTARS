@@ -1,3 +1,58 @@
-h1 {
-    margin-left: 50px;
+#home_display {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
+
+article {
+    display: inline-block;
+    max-height: 10%;
+}
+
+.event_article {
+    display: block;
+    border: 2px solid black;
+    width: 40%;
+    max-height: 15%;
+    border-radius: 8px;
+}
+
+.event_article h2 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: -10px;
+}
+
+.event_user {
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+.event_title {
+    text-align: center;
+}
+
+.event_date {
+    display: block;
+    width: fit-content;
+    margin: -5px auto 10px auto;
+}
+
+.event_article img {
+    display: block;
+    width: 80%;
+    height: 55%;
+    margin: 5px auto 0 auto;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.event_descr {
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+

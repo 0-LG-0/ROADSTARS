@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="form_display">
+    {% if post.post_text or post.image or post.upload_image %}
+        <h1>Editing Post</h1>
+    {% else %}
+        <h1>New Post</h1>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if error_message %}
+        <div>
+            {{ error_message }}
+        </div>
+        {% endif %}
+        <table>
+            {{ form.as_table }}
+            {{ form.media }}
+        </table>
+        <div class="user_options">
+            <a class="user_btns" href="{{ request.META.HTTP_REFERER }}">Back</a>
+            <button class="user_btns" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

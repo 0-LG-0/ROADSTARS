@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock %}
+{% block content %}
+<a class="add_post" href="{% url 'post-create' %}">Add Post</a>
+{% for post in posts %}
+    <a class="detail_link" href="{% url 'user-post-detail' post.id %}">
+        <div class="post_display">
+            <p class="user_date">{{ post.created_at|date:"m-d-y h:i A" }}</p>
+            {% if post.image %}
+                <img class="post_img" src="{{ post.image }}" />
+            {% endif %}
+            {% if post.upload_image %}
+                <img class="post_img" src="{{ post.upload_image.url }}" />
+            {% endif %}
+            {% if post.post_text %}
+                {% autoescape off %}
+                    <div class="post_txt">{{ post.post_text }}</div>
+                {% endautoescape %}
+            {% endif %}
+        </div>
+    </a>
+{% endfor %}
+{% endblock %}

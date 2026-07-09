@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head %}
+<!-- {% load static %}  if youre using ind css for page 
+css link here -->
+{{ form.media }}
+{% endblock %}
+{% block content %}
+{% if not user.is_authenticated %}
+    <section>
+        <form action="{% url 'user-login' %}" method="post">
+            <h1>LogIn</h1>
+            {% csrf_token %} {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <button type="submit">Login</button>
+        </form>
+    </section>
+{% endif %}
+{% endblock %}
